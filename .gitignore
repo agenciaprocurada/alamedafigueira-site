@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code (user-local)
+.claude/
+
+# Legacy build leftovers (locked on Windows during conversion - safe to delete manually)
+node_modules/
+html-export/
+.next/
+
+# Env / Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*

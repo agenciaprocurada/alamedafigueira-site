@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alameda Figueira Eventos - Casamentos e Eventos Especiais</title>
+  <meta name="description" content="Há mais de 15 anos criando momentos especiais. Espaço único para casamentos, aniversários e eventos corporativos em Cachoeirinha - RS." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'dm-serif': ['"DM Serif Text"', 'serif'],
+            inter: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-dm-serif { font-family: 'DM Serif Text', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+
+    html { scroll-behavior: smooth; }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #059669, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-gradient {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .green-gradient {
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+    }
+
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .floating-animation { animation: float 8s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      25% { transform: translateY(-10px) rotate(1deg); }
+      50% { transform: translateY(-20px) rotate(0); }
+      75% { transform: translateY(-10px) rotate(-1deg); }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #059669; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #047857; }
+    ::selection { background-color: #059669; color: white; }
+
+    .stat-card.is-visible { opacity: 1; transform: translateY(0); }
+    .stat-card { opacity: 0; transform: translateY(2rem); transition: all 700ms; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <a href="#hero" class="flex items-center space-x-2 sm:space-x-3 cursor-pointer">
+          <div class="relative">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-dm-serif text-lg sm:text-xl font-bold">A</span>
+            </div>
+            <div class="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-400 rounded-full animate-pulse"></div>
+          </div>
+          <div>
+            <h1 id="logo-title" class="font-dm-serif text-lg sm:text-xl font-semibold transition-colors text-white">Alameda Figueira</h1>
+            <p id="logo-subtitle" class="text-xs font-medium transition-colors text-emerald-200">Eventos Especiais</p>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-1" id="desktop-nav">
+          <a href="#hero" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Início</a>
+          <a href="#infrastructure" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Sobre</a>
+          <a href="#event-types" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Eventos</a>
+          <a href="#location" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Localização</a>
+          <a href="#testimonials" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Depoimentos</a>
+          <a href="#online-quote" class="nav-link px-4 py-2 rounded-lg font-inter text-sm font-medium transition-all duration-300 hover:scale-105 text-white hover:text-emerald-300 hover:bg-white/10">Contato</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center space-x-4">
+          <div id="phone-box" class="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all bg-white/10 backdrop-blur-sm">
+            <svg id="phone-icon" class="w-4 h-4 text-emerald-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+5551997115522" id="phone-text" class="font-inter text-sm font-medium text-white">(51) 99711-5522</a>
+          </div>
+          <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-flex items-center bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">ORÇAMENTO</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl transition-all duration-300 text-white hover:bg-white/10" aria-label="Menu de navegação">
+          <svg id="menu-open-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg id="menu-close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="lg:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-lg shadow-xl border-t border-gray-100 rounded-b-2xl mx-4 mt-2 hidden">
+        <nav class="py-4">
+          <a href="#hero" class="mobile-nav-link block w-full text-left px-6 py-4 font-inter text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 text-lg">Início</a>
+          <a href="#infrastructure" class="mobile-nav-link block w-full text-left px-6 py-4 font-inter text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 text-lg">Sobre</a>
+          <a href="#event-types" class="mobile-nav-link block w-full text-left px-6 py-4 font-inter text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 text-lg">Eventos</a>
+          <a href="#location" class="mobile-nav-link block w-full text-left px-6 py-4 font-inter text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 text-lg">Localização</a>
+          <a href="#testimonials" class="mobile-nav-link block w-full text-left px-6 py-4 font-inter text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 text-lg">Depoimentos</a>
+          <div class="px-6 py-4 border-t border-gray-100 mt-4">
+            <div class="flex items-center space-x-2 mb-4 p-4 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span class="font-inter text-base font-medium text-gray-700">(51) 99711-5522</span>
+            </div>
+            <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="block text-center w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl py-4 font-medium text-lg">SOLICITAR ORÇAMENTO</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen">
+
+    <section id="hero" class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="images/couple-dancing.jpg" alt="Casal de noivos dançando" class="w-full h-full object-cover scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
+      </div>
+
+      <div class="hidden md:block absolute top-20 left-10 floating-animation opacity-30">
+        <div class="p-3 bg-white/10 backdrop-blur-sm rounded-full">
+          <svg class="w-6 h-6 text-emerald-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+        </div>
+      </div>
+      <div class="hidden md:block absolute top-40 right-20 floating-animation opacity-30" style="animation-delay:2s">
+        <div class="p-3 bg-white/10 backdrop-blur-sm rounded-full">
+          <svg class="w-6 h-6 text-emerald-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+        </div>
+      </div>
+      <div class="hidden md:block absolute bottom-40 left-20 floating-animation opacity-30" style="animation-delay:4s">
+        <div class="p-3 bg-white/10 backdrop-blur-sm rounded-full">
+          <svg class="w-6 h-6 text-emerald-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+      </div>
+
+      <div class="relative z-10 text-center max-w-6xl mx-auto px-4">
+        <div class="mb-8 sm:mb-12">
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium mb-6 sm:mb-8 tracking-wide leading-tight">
+            O Lugar dos Seus <span class="gradient-text">Sonhos</span>
+          </h2>
+
+          <div class="flex items-center justify-center mb-6 sm:mb-8">
+            <div class="h-px bg-gradient-to-r from-transparent via-emerald-300 to-transparent w-24 sm:w-32"></div>
+            <div class="mx-3 sm:mx-4 p-2 bg-emerald-500/20 rounded-full">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 text-emerald-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+            </div>
+            <div class="h-px bg-gradient-to-r from-transparent via-emerald-300 to-transparent w-24 sm:w-32"></div>
+          </div>
+
+          <p class="font-inter text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 font-light max-w-4xl mx-auto leading-relaxed text-gray-100 px-4">
+            Transformamos momentos especiais em memórias eternas. Um espaço único cercado pela natureza, onde cada detalhe é pensado para o seu evento perfeito.
+          </p>
+
+          <div class="flex flex-col gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
+            <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="group inline-flex items-center justify-center w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 sm:px-12 py-4 text-base sm:text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105 shadow-2xl min-w-[280px]">
+              SOLICITAR ORÇAMENTO
+              <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <a href="#event-types" class="group inline-flex items-center justify-center w-full sm:w-auto bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 px-8 sm:px-12 py-4 text-base sm:text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105 min-w-[280px]">
+              <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              VER NOSSA GALERIA
+            </a>
+          </div>
+
+          <div class="inline-flex items-center bg-red-500/20 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-red-400/30 mx-4">
+            <div class="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full animate-pulse mr-2 sm:mr-3"></div>
+            <span class="text-red-200 text-xs sm:text-sm font-medium">Agenda limitada - Reserve sua data hoje</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="online-quote" class="py-16 sm:py-24 bg-gradient-to-br from-gray-50 to-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12 sm:mb-16">
+            <div class="inline-flex items-center justify-center p-3 sm:p-4 bg-emerald-100 rounded-2xl mb-6 sm:mb-8 shadow-lg">
+              <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
+            </div>
+
+            <h2 class="font-dm-serif text-3xl sm:text-5xl md:text-6xl font-semibold text-gray-800 mb-4 sm:mb-6 tracking-tight px-4">
+              ORÇAMENTO <span class="gradient-text">Online</span>
+            </h2>
+
+            <div class="flex items-center justify-center mb-6 sm:mb-8">
+              <div class="h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent w-24 sm:w-32 rounded-full"></div>
+            </div>
+
+            <p class="font-inter text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+              Receba um orçamento personalizado para o seu evento. Nossa equipe especializada entrará em contato rapidamente para entender suas necessidades e criar uma proposta única.
+            </p>
+
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4">
+              <div class="flex items-center space-x-3 bg-blue-50 rounded-full px-4 sm:px-6 py-3 shadow-sm border border-gray-100">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span class="font-inter text-sm font-medium text-gray-700">Resposta em até 24h</span>
+              </div>
+              <div class="flex items-center space-x-3 bg-green-50 rounded-full px-4 sm:px-6 py-3 shadow-sm border border-gray-100">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span class="font-inter text-sm font-medium text-gray-700">Orçamento sem compromisso</span>
+              </div>
+              <div class="flex items-center space-x-3 bg-purple-50 rounded-full px-4 sm:px-6 py-3 shadow-sm border border-gray-100">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span class="font-inter text-sm font-medium text-gray-700">Atendimento personalizado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+            <div class="p-6 sm:p-8 md:p-12">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+                <div class="text-center group">
+                  <div class="relative mb-4 sm:mb-6">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                      <span class="text-2xl sm:text-3xl">📝</span>
+                    </div>
+                  </div>
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-3">Preencha</h3>
+                  <p class="text-gray-600 leading-relaxed text-sm sm:text-base">Conte-nos sobre seu evento: data, tipo, número de convidados e suas preferências especiais</p>
+                </div>
+                <div class="text-center group">
+                  <div class="relative mb-4 sm:mb-6">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                      <span class="text-2xl sm:text-3xl">💬</span>
+                    </div>
+                  </div>
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-3">Receba</h3>
+                  <p class="text-gray-600 leading-relaxed text-sm sm:text-base">Nossa equipe preparará um orçamento detalhado e personalizado em até 24 horas úteis</p>
+                </div>
+                <div class="text-center group">
+                  <div class="relative mb-4 sm:mb-6">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                      <span class="text-2xl sm:text-3xl">🎉</span>
+                    </div>
+                  </div>
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-3">Realize</h3>
+                  <p class="text-gray-600 leading-relaxed text-sm sm:text-base">Agende uma visita e vamos juntos planejar o evento dos seus sonhos com todo cuidado</p>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-br from-emerald-50 to-blue-50 rounded-2xl p-6 sm:p-8 text-center border border-emerald-100">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span class="font-semibold text-emerald-600 text-base sm:text-lg">Oferta Especial</span>
+                </div>
+                <p class="font-inter text-gray-700 mb-6 text-base sm:text-lg px-4">Solicite seu Orçamento agora mesmo</p>
+
+                <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="group inline-flex items-center justify-center w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 sm:px-16 py-4 text-base sm:text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl">
+                  SOLICITAR ORÇAMENTO
+                  <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 mt-6 text-sm text-gray-600">
+                  <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Sem compromisso</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+                    <span>Resposta garantida</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-gray-500 text-sm mt-6 px-4">* Resposta garantida em até 24 horas úteis. Seus dados estão seguros e protegidos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="py-16 sm:py-20 relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="images/couple-tree-background.jpg" alt="Casal sob a figueira centenária" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 green-gradient opacity-90"></div>
+      </div>
+
+      <div class="absolute inset-0 opacity-10 z-10">
+        <div class="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 border border-white/20 rounded-full"></div>
+        <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-white/20 rounded-full"></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-20">
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="flex justify-center mb-6 sm:mb-8">
+            <div class="p-3 sm:p-4 rounded-full bg-white/20 backdrop-blur-sm">
+              <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+          </div>
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-medium mb-4 sm:mb-6 tracking-wide text-white px-4">Localização Privilegiada</h2>
+          <div class="w-20 sm:w-24 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6 sm:mb-8"></div>
+          <p class="font-inter text-lg sm:text-xl font-light max-w-2xl mx-auto leading-relaxed text-emerald-50 px-4">Encontre-nos em um local de fácil acesso, cercado pela natureza e tranquilidade</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div class="space-y-6 sm:space-y-8">
+            <div class="glass-effect rounded-2xl p-6 sm:p-8 text-white">
+              <h3 class="font-dm-serif text-xl sm:text-2xl font-medium mb-4 sm:mb-6">Localização</h3>
+              <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                <div class="flex items-start space-x-3 sm:space-x-4">
+                  <div class="w-2 h-2 bg-white rounded-full mt-2"></div>
+                  <div>
+                    <span class="font-inter font-medium">Endereço:</span>
+                    <p class="font-inter text-sm">Estrada Antônio José do Nascimento, 1175</p>
+                    <p class="font-inter text-sm">Distrito Industrial, Cachoeirinha - RS</p>
+                    <p class="font-inter text-sm">CEP: 94930-280</p>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                  <div class="w-2 h-2 bg-white rounded-full"></div>
+                  <span class="font-inter text-sm sm:text-base">Estacionamento para 200 veículos</span>
+                </div>
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                  <div class="w-2 h-2 bg-white rounded-full"></div>
+                  <span class="font-inter text-sm sm:text-base">Fácil acesso pela BR-290</span>
+                </div>
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                  <div class="w-2 h-2 bg-white rounded-full"></div>
+                  <span class="font-inter text-sm sm:text-base">Área segura e bem sinalizada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover">
+            <div class="aspect-video bg-gray-200 relative">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.9295016920037!2d-51.114470399999995!3d-29.923931699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519717574375935%3A0x962656af1d397db2!2sEstr.%20Ant%C3%B4nio%20Jos%C3%A9%20do%20Nascimento%2C%201175%20-%20Distrito%20Industrial%2C%20Cachoeirinha%20-%20RS%2C%2094930-090!5e0!3m2!1spt-BR!2sbr!4v1761338112324!5m2!1spt-BR!2sb" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0" title="Localização Alameda Figueira Eventos"></iframe>
+            </div>
+            <div class="p-4 sm:p-6">
+              <a href="https://www.google.com/maps/search/?api=1&query=Estrada+Ant%C3%B4nio+Jos%C3%A9+do+Nascimento+1175+Distrito+Industrial+Cachoeirinha+RS" target="_blank" rel="noopener" class="group inline-flex items-center justify-center w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 sm:px-8 py-3 transition-all duration-300 hover:scale-105 shadow-lg">
+                <svg class="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                Ver no Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="infrastructure" class="py-16 sm:py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-medium text-gray-800 mb-4 sm:mb-6 tracking-wide px-4">Nossa Infraestrutura</h2>
+          <div class="w-20 sm:w-24 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mb-6 sm:mb-8"></div>
+          <p class="font-inter text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">Conheça nossa completa infraestrutura pensada nos mínimos detalhes para proporcionar uma experiência única e memorável</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
+          <div class="group">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="w-full h-48 sm:h-64 relative bg-gray-50 flex items-center justify-center">
+                  <img src="images/figueira-icon.png" alt="A Figueira" class="max-w-[200px] max-h-[200px] object-contain group-hover:scale-110 transition-transform duration-500" />
+                </div>
+              </div>
+              <div class="p-6 sm:p-8">
+                <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-gray-800 mb-3 sm:mb-4">A Figueira</h3>
+                <p class="font-inter text-gray-600 leading-relaxed text-sm sm:text-base">Assim como o amor, a árvore para viver precisa de raiz profunda, amor, carinho e cuidado. Interessante o fato do casal poder plantar uma árvore em casa e verem juntos ela crescer assim como o amor.</p>
+              </div>
+            </div>
+          </div>
+          <div class="group">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="w-full h-48 sm:h-64 relative bg-gray-50 flex items-center justify-center">
+                  <img src="images/alameda-icon.png" alt="A Alameda" class="max-w-[200px] max-h-[200px] object-contain group-hover:scale-110 transition-transform duration-500" />
+                </div>
+              </div>
+              <div class="p-6 sm:p-8">
+                <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-gray-800 mb-3 sm:mb-4">A Alameda</h3>
+                <p class="font-inter text-gray-600 leading-relaxed text-sm sm:text-base">Espaço para realização de Cerimônias ao ar livre, Festa de Debutante e entre outros Eventos. Conheça o local que vai transformar a sua festa em um momento inesquecível.</p>
+              </div>
+            </div>
+          </div>
+          <div class="group">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="w-full h-48 sm:h-64 relative bg-gray-50 flex items-center justify-center">
+                  <img src="images/venue-night.png" alt="O Lugar" class="max-w-[200px] max-h-[200px] object-contain group-hover:scale-110 transition-transform duration-500" />
+                </div>
+              </div>
+              <div class="p-6 sm:p-8">
+                <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-gray-800 mb-3 sm:mb-4">O Lugar</h3>
+                <p class="font-inter text-gray-600 leading-relaxed text-sm sm:text-base">A Alameda figueira é um lugar com cenário criado especialmente para você viver grandes momentos. Ambientes em estilo rústico, numa atmosfera que inspira alegria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 sm:mt-16 text-center">
+          <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-2xl p-6 sm:p-8 md:p-12">
+            <h3 class="font-dm-serif text-2xl sm:text-3xl font-medium text-gray-800 mb-3 sm:mb-4 px-4">Mais de 15 anos criando momentos especiais</h3>
+            <p class="font-inter text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">Nossa experiência e dedicação garantem que cada detalhe do seu evento seja perfeito</p>
+            <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 sm:px-12 py-4 text-base sm:text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl">SOLICITAR ORÇAMENTO</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="event-types" class="py-16 sm:py-20 section-gradient">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-medium text-gray-800 mb-4 sm:mb-6 tracking-wide px-4">Tipos de Eventos</h2>
+          <div class="w-20 sm:w-24 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mb-6 sm:mb-8"></div>
+          <p class="font-inter text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">Realizamos eventos únicos e personalizados para cada ocasião especial da sua vida</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <a href="#online-quote" class="group cursor-pointer block">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="aspect-square relative">
+                  <img src="images/ceremony-outdoor.jpg" alt="Casamentos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute top-4 sm:top-6 left-4 sm:left-6">
+                  <div class="p-2 sm:p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-white mb-1 sm:mb-2">Casamentos</h3>
+                  <p class="font-inter text-white/90 text-sm">O dia mais especial da sua vida</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-6">
+                <span class="font-inter text-emerald-600 hover:text-emerald-700 font-medium transition-colors group-hover:translate-x-2 transform transition-transform duration-300 text-sm sm:text-base inline-block">Ver galeria →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#online-quote" class="group cursor-pointer block">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="aspect-square relative">
+                  <img src="images/party-indoor.jpg" alt="Aniversários" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute top-4 sm:top-6 left-4 sm:left-6">
+                  <div class="p-2 sm:p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-white mb-1 sm:mb-2">Aniversários</h3>
+                  <p class="font-inter text-white/90 text-sm">Celebre suas conquistas</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-6">
+                <span class="font-inter text-emerald-600 hover:text-emerald-700 font-medium transition-colors text-sm sm:text-base inline-block">Ver galeria →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#online-quote" class="group cursor-pointer block">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="aspect-square relative">
+                  <img src="images/kids-party.jpg" alt="Festas Infantis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute top-4 sm:top-6 left-4 sm:left-6">
+                  <div class="p-2 sm:p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-white mb-1 sm:mb-2">Festas Infantis</h3>
+                  <p class="font-inter text-white/90 text-sm">Momentos únicos de celebração</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-6">
+                <span class="font-inter text-emerald-600 hover:text-emerald-700 font-medium transition-colors text-sm sm:text-base inline-block">Ver galeria →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#online-quote" class="group cursor-pointer block">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover">
+              <div class="relative overflow-hidden">
+                <div class="aspect-square relative">
+                  <img src="images/corporate-event.jpg" alt="Eventos Corporativos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute top-4 sm:top-6 left-4 sm:left-6">
+                  <div class="p-2 sm:p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                  <h3 class="font-dm-serif text-xl sm:text-2xl font-medium text-white mb-1 sm:mb-2">Eventos Corporativos</h3>
+                  <p class="font-inter text-white/90 text-sm">Profissionalismo e elegância</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-6">
+                <span class="font-inter text-emerald-600 hover:text-emerald-700 font-medium transition-colors text-sm sm:text-base inline-block">Ver galeria →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-16 sm:py-20 relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="images/couple-tree-background.jpg" alt="Casal sob a figueira centenária" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/70"></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="flex justify-center mb-6 sm:mb-8">
+            <div class="p-3 sm:p-4 rounded-full bg-white/20 backdrop-blur-sm">
+              <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
+            </div>
+          </div>
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-medium mb-4 sm:mb-6 tracking-wide text-white px-4">Depoimentos</h2>
+          <div class="w-20 sm:w-24 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6 sm:mb-8"></div>
+          <p class="font-inter text-lg sm:text-xl font-light max-w-2xl mx-auto leading-relaxed text-gray-200 px-4">O que nossos clientes dizem sobre a experiência na Alameda Figueira</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+          <div class="relative">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl relative mb-6 sm:mb-8">
+              <div class="absolute -top-3 sm:-top-4 left-6 sm:left-8">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
+              </div>
+              <p class="font-inter text-gray-700 leading-relaxed text-base sm:text-lg italic mb-4 sm:mb-6">"Lugar fantástico, pôr do sol incrível, figueira linda, todos detalhes são pensados para o seu evento sair perfeito. A equipe Gustavo Posselt Videomaker agradece pela recepção."</p>
+              <div class="absolute -bottom-3 sm:-bottom-4 left-10 sm:left-12 w-0 h-0 border-l-[12px] sm:border-l-[16px] border-l-transparent border-r-[12px] sm:border-r-[16px] border-r-transparent border-t-[12px] sm:border-t-[16px] border-t-white"></div>
+            </div>
+            <div class="flex items-center space-x-3 sm:space-x-4 ml-6 sm:ml-8">
+              <div class="relative">
+                <div class="w-[60px] h-[60px] rounded-full border-4 border-white shadow-lg bg-emerald-600 flex items-center justify-center text-white font-dm-serif text-xl">GP</div>
+              </div>
+              <div>
+                <h4 class="font-dm-serif text-base sm:text-lg font-medium text-white">Gustavo Posselt</h4>
+                <p class="font-inter text-emerald-300 text-sm">Videomaker</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl relative mb-6 sm:mb-8">
+              <div class="absolute -top-3 sm:-top-4 left-6 sm:left-8">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
+              </div>
+              <p class="font-inter text-gray-700 leading-relaxed text-base sm:text-lg italic mb-4 sm:mb-6">"Fiz meu casamento neste lugar encantador!! Equipe super organizada e comprometida! Lugar lindo, com uma energia indescritível!"</p>
+              <div class="absolute -bottom-3 sm:-bottom-4 left-10 sm:left-12 w-0 h-0 border-l-[12px] sm:border-l-[16px] border-l-transparent border-r-[12px] sm:border-r-[16px] border-r-transparent border-t-[12px] sm:border-t-[16px] border-t-white"></div>
+            </div>
+            <div class="flex items-center space-x-3 sm:space-x-4 ml-6 sm:ml-8">
+              <div class="relative">
+                <div class="w-[60px] h-[60px] rounded-full border-4 border-white shadow-lg bg-emerald-600 flex items-center justify-center text-white font-dm-serif text-xl">CH</div>
+              </div>
+              <div>
+                <h4 class="font-dm-serif text-base sm:text-lg font-medium text-white">Cristhw & Sombrio Huppes</h4>
+                <p class="font-inter text-emerald-300 text-sm">Casal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="statistics-section" class="py-16 sm:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 left-20 w-64 h-64 border border-white/20 rounded-full"></div>
+        <div class="absolute top-40 right-32 w-32 h-32 border border-white/20 rounded-full"></div>
+        <div class="absolute bottom-32 left-1/3 w-48 h-48 border border-white/20 rounded-full"></div>
+        <div class="absolute bottom-20 right-20 w-24 h-24 border border-white/20 rounded-full"></div>
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/20 via-transparent to-emerald-900/20"></div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="inline-flex items-center justify-center p-3 sm:p-4 bg-white/10 backdrop-blur-sm rounded-2xl mb-6 sm:mb-8 border border-white/20">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          </div>
+          <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 sm:mb-6 tracking-wide px-4">Nossa <span class="gradient-text">Trajetória</span></h2>
+          <div class="w-20 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto mb-6 sm:mb-8 rounded-full"></div>
+          <p class="font-inter text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">Números que refletem nossa dedicação em criar momentos únicos e inesquecíveis para nossos clientes</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div class="stat-card group relative" style="transition-delay:0ms">
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+              <div class="relative mb-4 sm:mb-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-emerald-400/30">
+                  <svg class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </div>
+                <div class="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 rounded-full animate-pulse opacity-80"></div>
+              </div>
+              <div class="mb-3 sm:mb-4">
+                <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300 mb-2 font-dm-serif"><span class="counter" data-target="15" data-suffix="+">0</span></div>
+              </div>
+              <h3 class="text-xs sm:text-sm font-bold tracking-wider text-white mb-2 sm:mb-3 font-inter">ANOS DE EXPERIÊNCIA</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-inter">Tradição e excelência em eventos</p>
+            </div>
+          </div>
+
+          <div class="stat-card group relative" style="transition-delay:150ms">
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+              <div class="relative mb-4 sm:mb-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-emerald-400/30">
+                  <svg class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div class="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 rounded-full animate-pulse opacity-80"></div>
+              </div>
+              <div class="mb-3 sm:mb-4">
+                <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300 mb-2 font-dm-serif"><span class="counter" data-target="1500" data-format="locale">0</span></div>
+              </div>
+              <h3 class="text-xs sm:text-sm font-bold tracking-wider text-white mb-2 sm:mb-3 font-inter">EVENTOS REALIZADOS</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-inter">Momentos únicos criados</p>
+            </div>
+          </div>
+
+          <div class="stat-card group relative" style="transition-delay:300ms">
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+              <div class="relative mb-4 sm:mb-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-emerald-400/30">
+                  <svg class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+                </div>
+                <div class="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 rounded-full animate-pulse opacity-80"></div>
+              </div>
+              <div class="mb-3 sm:mb-4">
+                <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300 mb-2 font-dm-serif"><span class="counter" data-target="500" data-format="locale">0</span></div>
+              </div>
+              <h3 class="text-xs sm:text-sm font-bold tracking-wider text-white mb-2 sm:mb-3 font-inter">CASAIS FELIZES</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-inter">Sonhos transformados em realidade</p>
+            </div>
+          </div>
+
+          <div class="stat-card group relative" style="transition-delay:450ms">
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 text-center border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+              <div class="relative mb-4 sm:mb-6">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-emerald-400/30">
+                  <svg class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400 group-hover:text-white transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+                </div>
+                <div class="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-emerald-500 rounded-full animate-pulse opacity-80"></div>
+              </div>
+              <div class="mb-3 sm:mb-4">
+                <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300 mb-2 font-dm-serif">∞</div>
+              </div>
+              <h3 class="text-xs sm:text-sm font-bold tracking-wider text-white mb-2 sm:mb-3 font-inter">MOMENTOS ESPECIAIS</h3>
+              <p class="text-xs text-gray-400 leading-relaxed font-inter">Memórias que duram para sempre</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 sm:mt-20 text-center">
+          <div class="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20">
+            <div class="flex items-center justify-center space-x-3 mb-4 sm:mb-6">
+              <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+              <span class="text-emerald-400 font-semibold text-base sm:text-lg font-inter">Compromisso com a Excelência</span>
+              <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+            </div>
+            <h3 class="font-dm-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-3 sm:mb-4 px-4">Mais de 15 anos criando histórias únicas</h3>
+            <p class="font-inter text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">Cada número representa não apenas um evento realizado, mas uma família que confiou em nós para tornar seus sonhos realidade. Nossa experiência é a garantia de que seu momento especial será perfeito.</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+              <div class="flex items-center space-x-2 bg-white/10 rounded-full px-3 sm:px-4 py-2 border border-white/20">
+                <svg class="w-4 h-4 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                <span class="text-white text-xs sm:text-sm font-medium">Excelência Reconhecida</span>
+              </div>
+              <div class="flex items-center space-x-2 bg-white/10 rounded-full px-3 sm:px-4 py-2 border border-white/20">
+                <svg class="w-4 h-4 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+                <span class="text-white text-xs sm:text-sm font-medium">Tradição Familiar</span>
+              </div>
+              <div class="flex items-center space-x-2 bg-white/10 rounded-full px-3 sm:px-4 py-2 border border-white/20">
+                <svg class="w-4 h-4 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/></svg>
+                <span class="text-white text-xs sm:text-sm font-medium">Qualidade Premium</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <img src="images/venue-facade.jpg" alt="Alameda Eventos - Fachada da casa" class="rounded-2xl shadow-2xl w-full card-hover" />
+          </div>
+
+          <div>
+            <h2 class="font-dm-serif text-3xl sm:text-4xl md:text-5xl font-medium text-gray-800 mb-4 sm:mb-6 tracking-wide px-4 lg:px-0">Alameda Casa Vista</h2>
+            <p class="font-inter text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed px-4 lg:px-0">Desfrute da vista e da paz de um ambiente único. A Alameda é um espaço especialmente criado para tornar seu evento inesquecível, com toda a infraestrutura necessária para receber seus convidados com conforto e elegância.</p>
+
+            <div class="bg-emerald-50 rounded-xl p-6 mb-6 sm:mb-8 mx-4 lg:mx-0">
+              <h3 class="font-dm-serif text-lg sm:text-xl font-medium text-gray-800 mb-4">Endereço Completo</h3>
+              <div class="space-y-2 text-gray-700">
+                <p class="font-inter text-sm sm:text-base">Estrada Antônio José do Nascimento, 1175</p>
+                <p class="font-inter text-sm sm:text-base">Distrito Industrial</p>
+                <p class="font-inter text-sm sm:text-base">Cachoeirinha - RS</p>
+                <p class="font-inter text-sm sm:text-base">CEP: 94930-280</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 px-4 lg:px-0">
+              <div class="flex items-center space-x-3 sm:space-x-4 p-4 bg-white rounded-xl shadow-sm">
+                <div class="p-2 bg-emerald-100 rounded-lg">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-inter font-medium text-gray-800 text-sm sm:text-base">Endereço</h4>
+                  <p class="text-xs sm:text-sm text-gray-600">Cachoeirinha - RS</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3 sm:space-x-4 p-4 bg-white rounded-xl shadow-sm">
+                <div class="p-2 bg-blue-100 rounded-lg">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-inter font-medium text-gray-800 text-sm sm:text-base">Horário</h4>
+                  <p class="text-xs sm:text-sm text-gray-600">Flexível</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3 sm:space-x-4 p-4 bg-white rounded-xl shadow-sm">
+                <div class="p-2 bg-purple-100 rounded-lg">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-inter font-medium text-gray-800 text-sm sm:text-base">Capacidade</h4>
+                  <p class="text-xs sm:text-sm text-gray-600">Até 300 pessoas</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3 sm:space-x-4 p-4 bg-white rounded-xl shadow-sm">
+                <div class="p-2 bg-orange-100 rounded-lg">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+                </div>
+                <div>
+                  <h4 class="font-inter font-medium text-gray-800 text-sm sm:text-base">Estacionamento</h4>
+                  <p class="text-xs sm:text-sm text-gray-600">200 vagas</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4 px-4 lg:px-0">
+              <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto green-gradient hover:shadow-2xl text-white px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 text-center">AGENDAR VISITA</a>
+              <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 py-3 rounded-full transition-all duration-300 bg-transparent ml-0 sm:ml-4 text-center">VER GALERIA COMPLETA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-900">
+    <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10">
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/mesa-elegante.jpg" alt="Mesa elegante para evento" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/noiva-natureza.jpg" alt="Noiva em ambiente natural" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/arvore-iluminada.jpg" alt="Árvore iluminada à noite" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/mesa-posta.png" alt="Mesa posta ao ar livre" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/casal-beijo.jpg" alt="Casal de noivos se beijando" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/casal-danca.jpg" alt="Casal dançando no campo" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/love-light.jpg" alt="Letreiro LOVE iluminado" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/lounge-area.jpg" alt="Área de lounge" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/pista-danca.jpg" alt="Pista de dança iluminada" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+      <div class="aspect-square overflow-hidden group cursor-pointer"><img src="images/gallery/kombi-vintage.jpg" alt="Kombi vintage" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 group-hover:brightness-110" /></div>
+    </div>
+
+    <div class="bg-black py-8 sm:py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-white">
+          <div>
+            <h3 class="font-dm-serif text-xl sm:text-2xl font-medium mb-3 sm:mb-4">Alameda Figueira</h3>
+            <p class="font-inter text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">Há mais de 15 anos criando momentos especiais e transformando sonhos em realidade.</p>
+            <div class="space-y-2 text-gray-400">
+              <p class="font-inter text-xs sm:text-sm">📍 Estrada Antônio José do Nascimento, 1175</p>
+              <p class="font-inter text-xs sm:text-sm">Distrito Industrial, Cachoeirinha - RS</p>
+              <p class="font-inter text-xs sm:text-sm">📞 <a href="tel:+5551997115522" class="hover:text-emerald-400">(51) 99711-5522</a></p>
+              <p class="font-inter text-xs sm:text-sm">✉️ <a href="mailto:contato@alamedafigueira.com.br" class="hover:text-emerald-400">contato@alamedafigueira.com.br</a></p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-dm-serif text-lg sm:text-xl font-medium mb-3 sm:mb-4">Nossos Serviços</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li class="font-inter text-xs sm:text-sm hover:text-emerald-400 transition-colors cursor-pointer">Casamentos</li>
+              <li class="font-inter text-xs sm:text-sm hover:text-emerald-400 transition-colors cursor-pointer">Aniversários &amp; Formaturas</li>
+              <li class="font-inter text-xs sm:text-sm hover:text-emerald-400 transition-colors cursor-pointer">Festas Infantis</li>
+              <li class="font-inter text-xs sm:text-sm hover:text-emerald-400 transition-colors cursor-pointer">Eventos Corporativos</li>
+              <li class="font-inter text-xs sm:text-sm hover:text-emerald-400 transition-colors cursor-pointer">Confraternizações</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-dm-serif text-lg sm:text-xl font-medium mb-3 sm:mb-4">Fale Conosco</h4>
+            <div class="space-y-3 sm:space-y-4">
+              <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto green-gradient hover:shadow-xl text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 font-inter text-xs sm:text-sm text-center">WHATSAPP</a>
+              <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="inline-block w-full sm:w-auto border border-emerald-600 text-emerald-400 hover:bg-emerald-600 hover:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 font-inter text-xs sm:text-sm mt-3 sm:mt-0 sm:ml-3 text-center">AGENDAR VISITA</a>
+            </div>
+
+            <div class="mt-4 sm:mt-6">
+              <h5 class="font-dm-serif text-sm font-medium mb-3 text-gray-300">Siga-nos</h5>
+              <div class="flex space-x-3 sm:space-x-4">
+                <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors"><span class="text-white text-xs sm:text-sm">📘</span></a>
+                <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors"><span class="text-white text-xs sm:text-sm">📷</span></a>
+                <a href="http://wa.me/5551997115522" target="_blank" rel="noopener" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors"><span class="text-white text-xs sm:text-sm">💬</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+          <p class="font-inter text-gray-400 text-xs sm:text-sm">© 2025 Alameda Figueira Eventos. Todos os direitos reservados.</p>
+          <p class="font-inter text-gray-500 text-xs mt-2">Desenvolvido com 💚 para criar momentos inesquecíveis</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const header = document.getElementById('site-header');
+      const logoTitle = document.getElementById('logo-title');
+      const logoSubtitle = document.getElementById('logo-subtitle');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const phoneBox = document.getElementById('phone-box');
+      const phoneIcon = document.getElementById('phone-icon');
+      const phoneText = document.getElementById('phone-text');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+
+      function setScrolled(isScrolled) {
+        if (isScrolled) {
+          header.classList.remove('bg-transparent');
+          header.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-lg', 'border-b', 'border-gray-100');
+          logoTitle.classList.remove('text-white');
+          logoTitle.classList.add('text-gray-800');
+          logoSubtitle.classList.remove('text-emerald-200');
+          logoSubtitle.classList.add('text-emerald-600');
+          navLinks.forEach(l => {
+            l.classList.remove('text-white', 'hover:text-emerald-300', 'hover:bg-white/10');
+            l.classList.add('text-gray-700', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+          });
+          phoneBox.classList.remove('bg-white/10', 'backdrop-blur-sm');
+          phoneBox.classList.add('bg-gray-50');
+          phoneIcon.classList.remove('text-emerald-300');
+          phoneIcon.classList.add('text-emerald-600');
+          phoneText.classList.remove('text-white');
+          phoneText.classList.add('text-gray-700');
+          mobileBtn.classList.remove('text-white', 'hover:bg-white/10');
+          mobileBtn.classList.add('text-gray-700', 'hover:bg-gray-100');
+        } else {
+          header.classList.add('bg-transparent');
+          header.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-lg', 'border-b', 'border-gray-100');
+          logoTitle.classList.add('text-white');
+          logoTitle.classList.remove('text-gray-800');
+          logoSubtitle.classList.add('text-emerald-200');
+          logoSubtitle.classList.remove('text-emerald-600');
+          navLinks.forEach(l => {
+            l.classList.add('text-white', 'hover:text-emerald-300', 'hover:bg-white/10');
+            l.classList.remove('text-gray-700', 'hover:text-emerald-600', 'hover:bg-emerald-50');
+          });
+          phoneBox.classList.add('bg-white/10', 'backdrop-blur-sm');
+          phoneBox.classList.remove('bg-gray-50');
+          phoneIcon.classList.add('text-emerald-300');
+          phoneIcon.classList.remove('text-emerald-600');
+          phoneText.classList.add('text-white');
+          phoneText.classList.remove('text-gray-700');
+          mobileBtn.classList.add('text-white', 'hover:bg-white/10');
+          mobileBtn.classList.remove('text-gray-700', 'hover:bg-gray-100');
+        }
+      }
+
+      window.addEventListener('scroll', () => setScrolled(window.scrollY > 50));
+
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-open-icon');
+      const closeIcon = document.getElementById('menu-close-icon');
+      mobileBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          openIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+
+      const counters = document.querySelectorAll('.counter');
+      const cards = document.querySelectorAll('.stat-card');
+      let animated = false;
+      const animateCounters = () => {
+        if (animated) return;
+        animated = true;
+        cards.forEach(c => c.classList.add('is-visible'));
+        counters.forEach(el => {
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || '';
+          const format = el.dataset.format;
+          const duration = 2000;
+          const steps = 60;
+          const stepDuration = duration / steps;
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            const progress = step / steps;
+            const value = Math.floor(target * progress);
+            el.textContent = (format === 'locale' ? value.toLocaleString('pt-BR') : value) + suffix;
+            if (step >= steps) {
+              clearInterval(timer);
+              el.textContent = (format === 'locale' ? target.toLocaleString('pt-BR') : target) + suffix;
+            }
+          }, stepDuration);
+        });
+      };
+
+      const section = document.getElementById('statistics-section');
+      if ('IntersectionObserver' in window && section) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) animateCounters(); });
+        }, { threshold: 0.3 });
+        obs.observe(section);
+      } else {
+        animateCounters();
+      }
+    })();
+  </script>
+</body>
+</html>
