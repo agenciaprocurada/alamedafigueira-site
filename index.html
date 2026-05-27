@@ -241,6 +241,125 @@
     }
     body.lightbox-open { overflow: hidden; }
 
+    /* Depoimentos (cards de imagem) */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 80rem;
+      margin: 0 auto;
+      align-items: start;
+    }
+    @media (min-width: 640px) {
+      .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; }
+    }
+    @media (min-width: 1024px) {
+      .testimonials-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+    }
+    .testimonial-card {
+      position: relative;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 10px 0;
+      transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .testimonial-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 700ms ease, transform 700ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 56px -10px rgba(0, 0, 0, 0.65);
+    }
+    .testimonial-img-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.55rem;
+      background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    }
+    .testimonial-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .testimonial-expand {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      color: var(--alameda-sage-dark);
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 250ms ease, transform 250ms ease;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+    .testimonial-card:hover .testimonial-expand,
+    .testimonial-card:focus-visible .testimonial-expand {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .testimonial-caption {
+      padding: 0.9rem 0.5rem 1rem;
+      margin: 0 -10px;
+      text-align: center;
+      background: white;
+    }
+    .testimonial-caption h4 {
+      font-family: 'DM Serif Text', serif;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      color: var(--alameda-sage-dark);
+      margin-bottom: 0.2rem;
+    }
+    .testimonial-caption p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+    @media (max-width: 639px) {
+      .testimonials-grid {
+        display: flex;
+        grid-template-columns: unset;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0.25rem 1rem 1.25rem;
+        margin: 0 -1rem;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+        -webkit-overflow-scrolling: touch;
+      }
+      .testimonials-grid::-webkit-scrollbar { height: 6px; }
+      .testimonials-grid::-webkit-scrollbar-track { background: transparent; }
+      .testimonials-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.5); border-radius: 3px; }
+      .testimonial-card {
+        flex: 0 0 80%;
+        max-width: 80%;
+        scroll-snap-align: center;
+      }
+      .testimonial-expand { opacity: 1; transform: scale(1); }
+    }
+
     /* Event Type Icons (paleta emerald da seção Localização) */
     :root {
       --alameda-leaf: #34d399;
@@ -307,6 +426,119 @@
     @media (max-width: 640px) {
       .event-icon-wrap { width: 6rem; height: 6rem; }
       .event-icon-wrap svg { width: 2.75rem; height: 2.75rem; }
+    }
+
+    /* Bento Grid for Tipos de Eventos */
+    .event-bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .event-bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+      .event-bento-grid > .event-featured {
+        grid-column: span 2;
+      }
+    }
+    @media (min-width: 1024px) {
+      .event-bento-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 1fr);
+      }
+      .event-bento-grid > .event-featured {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+
+    /* Featured (Bento) variant — used for Casamentos */
+    .event-featured {
+      position: relative;
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+      border-radius: 1.5rem;
+      background:
+        radial-gradient(circle at 25% 15%, rgba(167, 207, 186, 0.22) 0%, transparent 55%),
+        linear-gradient(165deg, #f4faf6 0%, #ffffff 55%, #eef6f0 100%);
+      border: 1px solid rgba(167, 207, 186, 0.45);
+      box-shadow: 0 12px 32px -14px rgba(5, 150, 105, 0.22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 450ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 450ms ease;
+      overflow: hidden;
+    }
+    .event-featured::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(167, 207, 186, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .event-featured:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -14px rgba(5, 150, 105, 0.32);
+    }
+    .event-featured-badge {
+      align-self: center;
+      background: linear-gradient(135deg, var(--alameda-sage) 0%, var(--alameda-sage-dark) 100%);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 18px -6px rgba(5, 150, 105, 0.4);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .event-featured .event-icon-wrap {
+      width: 8.5rem;
+      height: 8.5rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      z-index: 2;
+    }
+    .event-featured .event-icon-wrap svg {
+      width: 4rem;
+      height: 4rem;
+    }
+    .event-featured:hover .event-icon-wrap {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 24px 42px -10px rgba(5, 150, 105, 0.55);
+    }
+    .event-featured:hover .event-icon-wrap::before { opacity: 0.7; inset: -12px; }
+    .event-featured:hover .event-icon-wrap::after { opacity: 0.35; inset: -20px; }
+    .event-featured h3 {
+      color: var(--alameda-sage-dark);
+      transition: color 300ms ease;
+      position: relative;
+      z-index: 2;
+    }
+    .event-featured:hover h3 { color: var(--alameda-sage); }
+    .event-featured-desc {
+      max-width: 32rem;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 640px) {
+      .event-featured { padding: 2.25rem 1.25rem 2rem; }
+      .event-featured .event-icon-wrap { width: 7rem; height: 7rem; margin-bottom: 1.25rem; }
+      .event-featured .event-icon-wrap svg { width: 3.25rem; height: 3.25rem; }
+      .event-featured-badge { font-size: 0.62rem; padding: 0.3rem 0.8rem; margin-bottom: 1.25rem; }
     }
 
     /* Hero Slideshow (crossfade entre fotos-topo) */
@@ -582,6 +814,7 @@
         <div id="gallery-filters" class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2" role="tablist" aria-label="Filtros de galeria">
           <button type="button" class="gallery-filter is-active" data-filter="all" role="tab" aria-selected="true">Todas as Fotos</button>
           <button type="button" class="gallery-filter" data-filter="casamentos" role="tab" aria-selected="false">Casamentos</button>
+          <button type="button" class="gallery-filter" data-filter="15-anos" role="tab" aria-selected="false">15 Anos</button>
           <!-- Futuras categorias: adicione novos <button> com data-filter="slug" -->
         </div>
 
@@ -695,14 +928,15 @@
           <p class="font-inter text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">Realizamos eventos únicos e personalizados para cada ocasião especial da sua vida</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 max-w-6xl mx-auto">
+        <div class="event-bento-grid">
 
-          <div class="event-icon-card">
+          <div class="event-featured">
+            <span class="event-featured-badge">Nossa Especialidade</span>
             <div class="event-icon-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
             </div>
-            <h3 class="font-dm-serif text-xl sm:text-2xl font-medium mb-3">Casamentos</h3>
-            <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed px-2">
+            <h3 class="font-dm-serif text-2xl sm:text-3xl md:text-4xl font-medium mb-4">Casamentos</h3>
+            <p class="event-featured-desc font-inter text-base sm:text-lg text-gray-700 leading-relaxed px-4 mx-auto">
               Cerimônia ao ar livre sob a figueira centenária e recepção rústica iluminada por velas e luzes douradas, criando a atmosfera perfeita para o dia mais especial da sua vida.
             </p>
           </div>
@@ -714,6 +948,16 @@
             <h3 class="font-dm-serif text-xl sm:text-2xl font-medium mb-3">15 Anos</h3>
             <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed px-2">
               A festa dos sonhos da debutante com toda a estrutura para uma noite mágica: pista de dança ampla, palco para a valsa e ambientação sofisticada que vira lembrança eterna.
+            </p>
+          </div>
+
+          <div class="event-icon-card">
+            <div class="event-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <h3 class="font-dm-serif text-xl sm:text-2xl font-medium mb-3">Kids</h3>
+            <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed px-2">
+              Festas infantis em um cenário natural amplo com muito espaço para brincadeiras, segurança total e infraestrutura completa. Um dia inesquecível para a criançada e tranquilidade para os pais.
             </p>
           </div>
 
@@ -766,45 +1010,9 @@
           <p class="font-inter text-lg sm:text-xl font-light max-w-2xl mx-auto leading-relaxed text-gray-200 px-4">O que nossos clientes dizem sobre a experiência na Alameda Figueira</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
-          <div class="relative">
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl relative mb-6 sm:mb-8">
-              <div class="absolute -top-3 sm:-top-4 left-6 sm:left-8">
-                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
-              </div>
-              <p class="font-inter text-gray-700 leading-relaxed text-base sm:text-lg italic mb-4 sm:mb-6">"Lugar fantástico, pôr do sol incrível, figueira linda, todos detalhes são pensados para o seu evento sair perfeito. A equipe Gustavo Posselt Videomaker agradece pela recepção."</p>
-              <div class="absolute -bottom-3 sm:-bottom-4 left-10 sm:left-12 w-0 h-0 border-l-[12px] sm:border-l-[16px] border-l-transparent border-r-[12px] sm:border-r-[16px] border-r-transparent border-t-[12px] sm:border-t-[16px] border-t-white"></div>
-            </div>
-            <div class="flex items-center space-x-3 sm:space-x-4 ml-6 sm:ml-8">
-              <div class="relative">
-                <div class="w-[60px] h-[60px] rounded-full border-4 border-white shadow-lg bg-emerald-600 flex items-center justify-center text-white font-dm-serif text-xl">GP</div>
-              </div>
-              <div>
-                <h4 class="font-dm-serif text-base sm:text-lg font-medium text-white">Gustavo Posselt</h4>
-                <p class="font-inter text-emerald-300 text-sm">Videomaker</p>
-              </div>
-            </div>
-          </div>
+        <div id="testimonials-grid" class="testimonials-grid" role="list" aria-label="Depoimentos de clientes"></div>
 
-          <div class="relative">
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl relative mb-6 sm:mb-8">
-              <div class="absolute -top-3 sm:-top-4 left-6 sm:left-8">
-                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v3l-3-3H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8Z"/></svg>
-              </div>
-              <p class="font-inter text-gray-700 leading-relaxed text-base sm:text-lg italic mb-4 sm:mb-6">"Fiz meu casamento neste lugar encantador!! Equipe super organizada e comprometida! Lugar lindo, com uma energia indescritível!"</p>
-              <div class="absolute -bottom-3 sm:-bottom-4 left-10 sm:left-12 w-0 h-0 border-l-[12px] sm:border-l-[16px] border-l-transparent border-r-[12px] sm:border-r-[16px] border-r-transparent border-t-[12px] sm:border-t-[16px] border-t-white"></div>
-            </div>
-            <div class="flex items-center space-x-3 sm:space-x-4 ml-6 sm:ml-8">
-              <div class="relative">
-                <div class="w-[60px] h-[60px] rounded-full border-4 border-white shadow-lg bg-emerald-600 flex items-center justify-center text-white font-dm-serif text-xl">CH</div>
-              </div>
-              <div>
-                <h4 class="font-dm-serif text-base sm:text-lg font-medium text-white">Cristhw & Sombrio Huppes</h4>
-                <p class="font-inter text-emerald-300 text-sm">Casal</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p class="text-center text-gray-300 text-sm mt-8 px-4">Clique em qualquer depoimento para ampliar</p>
       </div>
     </section>
 
@@ -1410,14 +1618,36 @@
         return 'Casamento ' + titled + ' na Alameda Figueira';
       }
 
+      const QUINZE_ANOS_BASE = 'images/galeria-de-fotos/15-anos-valentina/15-anos-valentina-';
+      const QUINZE_ANOS_SLUGS = [
+        '01','02','03','04','05','06','07','08','09','10','11','12','13','14'
+      ];
+
+      function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      const casamentosPhotos = CASAMENTOS_SLUGS.map(slug => ({
+        src: CASAMENTOS_BASE + slug + '.webp',
+        category: 'casamentos',
+        alt: altForCasamento(slug)
+      }));
+
+      const quinzeAnosPhotos = QUINZE_ANOS_SLUGS.map(slug => ({
+        src: QUINZE_ANOS_BASE + slug + '.webp',
+        category: '15-anos',
+        alt: 'Festa de 15 Anos na Alameda Figueira'
+      }));
+
       initGallery({
         gridId: 'gallery-grid',
         filtersSelector: '#gallery-filters',
-        photos: CASAMENTOS_SLUGS.map(slug => ({
-          src: CASAMENTOS_BASE + slug + '.webp',
-          category: 'casamentos',
-          alt: altForCasamento(slug)
-        }))
+        photos: shuffle(casamentosPhotos.concat(quinzeAnosPhotos))
       });
 
       const ESTRUTURA_BASE = 'images/galeria-de-fotos/fotos-extrutura-alameda/casamento-alameda-figueira-';
@@ -1428,18 +1658,121 @@
         'mariana-e-guilherme-01','mariana-e-guilherme-02','mariana-e-guilherme-03','mariana-e-guilherme-04','mariana-e-guilherme-05','mariana-e-guilherme-06','mariana-e-guilherme-07','mariana-e-guilherme-08','mariana-e-guilherme-09',
         'mariana-e-guilherme-11','mariana-e-guilherme-12','mariana-e-guilherme-13','mariana-e-guilherme-14','mariana-e-guilherme-15','mariana-e-guilherme-16','mariana-e-guilherme-17',
         'mariana-e-guilherme-21','mariana-e-guilherme-22','mariana-e-guilherme-23','mariana-e-guilherme-25',
-        'pietra-e-ruan-08','pietra-e-ruan-09','pietra-e-ruan-16','pietra-e-ruan-20','pietra-e-ruan-21','pietra-e-ruan-22','pietra-e-ruan-24','pietra-e-ruan-25','pietra-e-ruan-26','pietra-e-ruan-27','pietra-e-ruan-28','pietra-e-ruan-29'
+        'pietra-e-ruan-08','pietra-e-ruan-09','pietra-e-ruan-16','pietra-e-ruan-20','pietra-e-ruan-21','pietra-e-ruan-22','pietra-e-ruan-24','pietra-e-ruan-25','pietra-e-ruan-26','pietra-e-ruan-27','pietra-e-ruan-28'
       ];
+
+      const INTERNA_PHOTOS = [
+        'images/galeria-de-fotos/fotos-extrutura-alameda/interna/alameda-figueira-interna-01.webp',
+        'images/galeria-de-fotos/fotos-extrutura-alameda/interna/alameda-figueira-interna-02.webp',
+        'images/galeria-de-fotos/fotos-extrutura-alameda/interna/alameda-figueira-interna-03.webp',
+        'images/galeria-de-fotos/fotos-extrutura-alameda/interna/alameda-figueira-interna-04.webp'
+      ].map(src => ({
+        src,
+        category: 'estrutura',
+        alt: 'Espaço interno da Alameda Figueira'
+      }));
 
       initGallery({
         gridId: 'infrastructure-gallery-grid',
         filtersSelector: null,
-        photos: ESTRUTURA_SLUGS.map(slug => ({
+        photos: INTERNA_PHOTOS.concat(ESTRUTURA_SLUGS.map(slug => ({
           src: ESTRUTURA_BASE + slug + '.webp',
           category: 'estrutura',
           alt: 'Estrutura da Alameda Figueira'
-        }))
+        })))
       });
+
+      const testimonialsGrid = document.getElementById('testimonials-grid');
+      if (testimonialsGrid) {
+        const TESTIMONIALS = [
+          { file: 'Carol-Luciano-27.09.25.jpeg', names: 'Carol & Luciano', event: 'Casamento 27.09.25' },
+          { file: 'Felipe-Magali-21.03.26.jpeg', names: 'Felipe & Magali', event: 'Casamento 21.03.26' },
+          { file: 'Carol-Vini-19.04.26.jpeg', names: 'Carol & Vini', event: 'Casamento 19.04.26' },
+          { file: 'Adriana-Alessandro-pais-15anos.jpeg', names: 'Adriana & Alessandro', event: 'Pais 15 Anos' }
+        ];
+        const TESTIMONIAL_BASE = 'images/depoimentos-alameda/';
+
+        const testimonialPhotos = TESTIMONIALS.map(t => ({
+          src: TESTIMONIAL_BASE + t.file,
+          alt: 'Depoimento ' + t.names + ' - ' + t.event
+        }));
+
+        const tFrag = document.createDocumentFragment();
+        TESTIMONIALS.forEach((t, i) => {
+          const fig = document.createElement('figure');
+          fig.className = 'testimonial-card';
+          fig.setAttribute('role', 'listitem');
+          fig.tabIndex = 0;
+          fig.setAttribute('aria-label', t.names + ' - ' + t.event + ' (clique para ampliar)');
+
+          const imgWrap = document.createElement('div');
+          imgWrap.className = 'testimonial-img-wrap';
+
+          const img = document.createElement('img');
+          img.className = 'testimonial-img';
+          img.dataset.src = TESTIMONIAL_BASE + t.file;
+          img.alt = 'Depoimento ' + t.names + ' - ' + t.event;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          imgWrap.appendChild(img);
+
+          const expand = document.createElement('div');
+          expand.className = 'testimonial-expand';
+          expand.setAttribute('aria-hidden', 'true');
+          expand.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>';
+          imgWrap.appendChild(expand);
+
+          fig.appendChild(imgWrap);
+
+          const cap = document.createElement('figcaption');
+          cap.className = 'testimonial-caption';
+          const h = document.createElement('h4');
+          h.textContent = t.names;
+          const p = document.createElement('p');
+          p.textContent = t.event;
+          cap.appendChild(h);
+          cap.appendChild(p);
+          fig.appendChild(cap);
+
+          const openHere = () => lbOpen(testimonialPhotos, i);
+          fig.addEventListener('click', openHere);
+          fig.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openHere(); }
+          });
+
+          tFrag.appendChild(fig);
+        });
+        testimonialsGrid.appendChild(tFrag);
+
+        const tItems = Array.from(testimonialsGrid.querySelectorAll('.testimonial-card'));
+        if ('IntersectionObserver' in window) {
+          const tio = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting) return;
+              const card = entry.target;
+              const img = card.querySelector('img');
+              if (img && img.dataset.src) {
+                const reveal = () => card.classList.add('is-visible');
+                img.addEventListener('load', reveal, { once: true });
+                img.addEventListener('error', reveal, { once: true });
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                if (img.complete && img.naturalWidth > 0) reveal();
+              } else {
+                card.classList.add('is-visible');
+              }
+              observer.unobserve(card);
+            });
+          }, { rootMargin: '300px 0px', threshold: 0.01 });
+          tItems.forEach(item => tio.observe(item));
+        } else {
+          tItems.forEach(card => {
+            const img = card.querySelector('img');
+            if (img && img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+            card.classList.add('is-visible');
+          });
+        }
+      }
     })();
   </script>
 </body>

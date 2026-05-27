@@ -25,3 +25,7 @@ html-export/
 # Logs
 *.log
 npm-debug.log*
+
+# Local-only files (not for public repo)
+index2.html
+performance-wpfast.md
