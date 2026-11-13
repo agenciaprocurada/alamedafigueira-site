@@ -16,6 +16,11 @@
 
   <link rel="stylesheet" href="styles/tailwind.css">
 
+  <!-- Meta Pixel + CAPI + eventos do funil (Framework FOP, padrão ACBSul).
+       SEM defer: o PageView precisa sair na carga. Pixel vazio = rastreio desligado. -->
+  <script>window.AF_TRACK={pixel:'1589177192962822',capi:'/api/capi',content:{name:'Alameda Figueira - Espaço de Eventos',category:'espaco-eventos',id:'alameda-figueira'}};</script>
+  <script src="/assets/tracking.js"></script>
+
   <style>
     @font-face {
       font-family: 'Inter';
@@ -581,6 +586,8 @@
   </style>
 </head>
 <body class="antialiased">
+  <noscript><img height="1" width="1" style="display:none" alt=""
+    src="https://www.facebook.com/tr?id=1589177192962822&ev=PageView&noscript=1" /></noscript>
 
   <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
     <div class="container mx-auto px-4">
