@@ -305,10 +305,12 @@
   /* ---------- 9. clique no WhatsApp ou telefone = Contact ---------------- */
 
   function rotulo(link) {
-    return String(link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60) || 'icone';
+    return String(link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60) ||
+      link.getAttribute('aria-label') || 'icone';
   }
   function secao(link) {
-    var s = link.closest('section[id], header, footer');
+    if (link.classList.contains('wa-float')) return 'flutuante';
+    var s =link.closest('section[id], header, footer');
     if (!s) return 'pagina';
     return s.id || s.tagName.toLowerCase();
   }

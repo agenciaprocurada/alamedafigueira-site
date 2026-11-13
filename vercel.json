@@ -3,5 +3,8 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "buildCommand": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/politica-de-privacidade", "destination": "/politica-de-privacidade.html" }
+  ]
 }
